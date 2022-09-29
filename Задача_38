@@ -1,0 +1,25 @@
+// Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+//[3 7 22 2 78] -> 76
+int[] GenerateAndPrintRandomArray(int size, int from, int to)
+{
+var array = new int[size];
+for (int i=0; i<size; i++) 
+{
+    array[i] = new Random().Next(from, to+1);
+    Console.Write(array[i]+ " ");
+}
+Console.WriteLine();
+return array;
+}
+int MaxMinDifference(int[] arr)
+{
+    int min = int.MaxValue;
+    int max = int.MinValue;
+    for (int j=0; j<arr.Length; j++)
+    {
+        if(arr[j]<min) min=arr[j];
+        if(arr[j]>max) max=arr[j];
+    }
+    return (max-min);
+}
+Console.WriteLine(MaxMinDifference(GenerateAndPrintRandomArray(5, 1, 100)));

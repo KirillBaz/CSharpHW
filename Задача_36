@@ -1,0 +1,22 @@
+// // Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+// [3, 7, 23, 12] -> 19
+// [-4, -6, 89, 6] -> 0
+int[] GenerateAndPrintRandomArray(int size, int from, int to)
+{
+var array = new int[size];
+for (int i=0; i<size; i++) 
+{
+    array[i] = new Random().Next(from, to+1);
+    Console.Write(array[i]+ " ");
+}
+Console.WriteLine();
+return array;
+}
+int SumOddPositions(int[] arr)
+{
+int sum=0;
+for (int i=0; i<arr.Length; i+=2) sum+=arr[i]; 
+return sum;
+}
+
+Console.WriteLine(SumOddPositions(GenerateAndPrintRandomArray(5, 1, 100)));

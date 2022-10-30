@@ -1,0 +1,50 @@
+// Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// В итоге получается вот такой массив:
+// 7 4 2 1
+// 9 5 3 2
+// 8 4 4 2
+int[,]  CreateMatrix(int i, int j)
+{
+var array = new int[i,j];
+for (i = 0; i < array.GetLength(0); i++)
+{
+    for (j = 0; j < array.GetLength(1); j++)
+    {
+        array[i,j]=new Random().Next(0,10);
+        Console.Write(array[i, j]+ " ");
+    }
+Console.WriteLine();
+}
+return array;
+}
+
+
+void RowsFromMaxToMin(int[,] arr)
+{
+ Console.WriteLine();
+ for (int k = 0; k <arr.GetLength(0); k++)
+ {
+    int tmp=0;
+for(int i=0; i<arr.GetLength(1); i++)
+            for(int j=i+1; j<arr.GetLength(1); j++)
+                if (arr[k,i] < arr[k,j])
+                {
+                    tmp = arr[k,j];
+                    arr[k,j] = arr[k,i];
+                    arr[k,i] = tmp;
+                }
+ }
+for (int o = 0; o < arr.GetLength(0); o++)
+{
+    for (int t  = 0; t < arr.GetLength(1); t++)
+    {
+        Console.Write(arr[o, t]+ " ");
+    }
+Console.WriteLine();
+}
+}
+RowsFromMaxToMin(CreateMatrix(3,4));
